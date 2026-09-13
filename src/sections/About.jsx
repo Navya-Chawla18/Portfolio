@@ -41,7 +41,7 @@ function About() {
           About Me
         </h2>
 
-        <div className="space-y-4">
+        <div className="space-y-0">
 
           <div
             className="about-strip about-left w-full md:w-3/4 border-l-4 border-[#8B2635] pl-6 py-3
