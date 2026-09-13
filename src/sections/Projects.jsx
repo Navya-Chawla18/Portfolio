@@ -60,7 +60,6 @@ function Projects() {
               <a
                 href={project.link}
                 target="_blank"
-                rel="noopener noreferrer"
                 className="inline-block mt-6 bg-[#7A2635] px-6 py-3 rounded-lg
                            font-semibold text-[#F9F1E7]
                            hover:bg-[#5E1C29]

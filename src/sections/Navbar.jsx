@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
@@ -39,30 +40,67 @@ function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 flex items-center justify-between px-8 py-5 bg-[#4A1822] text-[#F4EDE4] shadow-md">
+    <nav className="sticky top-0 z-50 bg-[#4A1822] text-[#F4EDE4] shadow-md">
 
-      <h1 className="text-2xl font-bold tracking-wide">
-        Navya's Portfolio
-        <span className="text-[#C5A46D]">.</span>
-      </h1>
+      <div className="flex items-center justify-between px-5 md:px-8 py-5">
 
-      <div className="flex gap-8">
+        <h1 className="text-xl md:text-2xl font-bold tracking-wide">
+          Navya's Portfolio
+          <span className="text-[#C5A46D]">.</span>
+        </h1>
 
-        {navLinks.map((link) => (
-          <a
-            key={link.id}
-            href={`#${link.id}`}
-            className={`transition duration-300 ${
-              activeSection === link.id
-                ? "text-[#C5A46D] font-semibold"
-                : "hover:text-[#C5A46D]"
-            }`}
-          >
-            {link.name}
-          </a>
-        ))}
+        <div className="hidden md:flex gap-8">
+
+          {navLinks.map((link) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              className={`transition duration-300 ${
+                activeSection === link.id
+                  ? "text-[#C5A46D] font-semibold"
+                  : "hover:text-[#C5A46D]"
+              }`}
+            >
+              {link.name}
+            </a>
+          ))}
+
+        </div>
+
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden text-2xl"
+          aria-label="Toggle navigation menu"
+        >
+          ☰
+        </button>
 
       </div>
+
+      {isMenuOpen && (
+        <div className="md:hidden px-5 pb-5">
+
+          <div className="flex flex-col gap-4 bg-[#5E1C29] rounded-lg p-4">
+
+            {navLinks.map((link) => (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                onClick={() => setIsMenuOpen(false)}
+                className={`transition duration-300 ${
+                  activeSection === link.id
+                    ? "text-[#C5A46D] font-semibold"
+                    : "hover:text-[#C5A46D]"
+                }`}
+              >
+                {link.name}
+              </a>
+            ))}
+
+          </div>
+
+        </div>
+      )}
 
     </nav>
   );
