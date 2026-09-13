@@ -1,1 +1,84 @@
 @import "tailwindcss";
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes skillReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  animation: reveal 0.8s ease-out forwards;
+}
+
+.skill-reveal {
+  opacity: 0;
+  animation: skillReveal 0.7s ease-out forwards;
+}
+
+.float {
+  animation: float 4s ease-in-out infinite;
+}
+
+ .skill-hidden {
+  opacity: 0;
+  transform: translateY(25px);
+}
+
+.about-strip {
+  opacity: 0;
+}
+
+.about-left {
+  transform: translateX(-120px);
+}
+
+.about-right {
+  transform: translateX(120px);
+}
+
+
+.about-visible .about-strip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.about-visible .about-left:nth-child(1) {
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.about-visible .about-right:nth-child(2) {
+  transition: opacity 0.8s ease 0.8s, transform 0.8s ease 0.8s;
+}
+
+.about-visible .about-left:nth-child(3) {
+  transition: opacity 0.8s ease 1.6s, transform 0.8s ease 1.6s;
+}
